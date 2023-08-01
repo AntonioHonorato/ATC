@@ -1,12 +1,9 @@
-# Utilizamos una imagen base que contenga PHP y Apache
+# Utilizamos una imagen base que contenga PHP and Apache
 FROM php:8.1-apache
 
 # Variables de argumento
 ARG uid
 ARG user
-
-
-
 
 # Actualizamos los paquetes e instalamos extensiones de PHP que puedan ser necesarias
 RUN apt-get update && apt-get install -y \
@@ -16,10 +13,21 @@ RUN apt-get update && apt-get install -y \
     nano \
     zip \
     unzip \
+    nodejs \
+    npm  \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd
 
 
+# Verificamos que Node.js y npm se hayan instalado correctamente
+RUN node --version
+RUN npm --version
+
+RUN npm cache clean --force
+
+# Instala las dependencias del proyecto
+#RUN npm install
+#RUN npm ci --legacy-peer-deps
 # Copia el archivo de configuración de Apache para habilitar el sitio Laravel
 #COPY apache2.conf /etc/apache2/sites-available/000-default.conf
 
@@ -49,14 +57,18 @@ RUN mkdir -p /home/app/.composer && \
 RUN chmod +x git.sh
 RUN chmod +x docker.sh
 
-
 # Instala las dependencias de Composer
 RUN composer install
 
+# Instala las dependencias de npm (modificar este comando según tu caso)
+# Ejemplo: RUN npm install
+
 # Crea una carpeta para el almacenamiento de Laravel
 RUN chown -R www-data:www-data /var/www/html/storage
+RUN chown -R www-data:www-data /var/www/html
 
 RUN apt-get install -y git curl libmcrypt-dev default-mysql-client
 
 # Expone el puerto 8000 para acceder a la aplicación Laravel
+#CMD [ "npm run dev" ]
 EXPOSE 80
