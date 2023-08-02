@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('incident.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('incidents.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Nueva Incidencia') }}
                                 </a>
                               </div>

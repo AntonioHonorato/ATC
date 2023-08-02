@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
  * Class IncidentController
  * @package App\Http\Controllers
  */
-class IncidentController extends Controller
+class IncidentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class IncidentController extends Controller
     {
         $incidents = Incident::paginate();
 
-        return view('incident.index', compact('incidents'))
+        return view('incidents.index', compact('incidents'))
             ->with('i', (request()->input('page', 1) - 1) * $incidents->perPage());
     }
 
@@ -34,7 +34,7 @@ class IncidentController extends Controller
     {
         $incident = new Incident();
         $technical = Technical::pluck('name','id');
-        return view('incident.create', compact('incident','technical'));
+        return view('incidents.create', compact('incident','technical'));
     }
 
     /**
@@ -63,7 +63,7 @@ class IncidentController extends Controller
     {
         $incident = Incident::find($id);
 
-        return view('incident.show', compact('incident'));
+        return view('incidents.show', compact('incident'));
     }
 
     /**
@@ -76,7 +76,7 @@ class IncidentController extends Controller
     {
         $incident = Incident::find($id);
 
-        return view('incident.edit', compact('incident'));
+        return view('incidents.edit', compact('incident'));
     }
 
     /**

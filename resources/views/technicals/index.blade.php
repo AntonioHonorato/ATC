@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('technical.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('technicals.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -44,7 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($technical as $technical)
+                                    @foreach ($technicals as $technical)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
@@ -53,7 +53,7 @@
 											<td>{{ $technical->phone }}</td>
 
                                             <td>
-                                                <form action="{{ route('.destroy',$technical->id) }}" method="POST">
+                                                <form action="{{ route('technicals.destroy',$technical->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('technicals.show',$technical->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('technicals.edit',$technical->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $technical->links() !!}
+                {!! $technicals->links() !!}
             </div>
         </div>
     </div>

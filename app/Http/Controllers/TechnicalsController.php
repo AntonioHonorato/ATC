@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
  * Class TechnicalController
  * @package App\Http\Controllers
  */
-class TechnicalController extends Controller
+class TechnicalsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class TechnicalController extends Controller
      */
     public function index()
     {
-        $technical = Technical::paginate();
+        $technicals = Technical::paginate();
 
-        return view('technical.index', compact('technical'))
-            ->with('i', (request()->input('page', 1) - 1) * $technical->perPage());
+        return view('technicals.index', compact('technicals'))
+            ->with('i', (request()->input('page', 1) - 1) * $technicals->perPage());
     }
 
     /**
@@ -32,7 +32,7 @@ class TechnicalController extends Controller
     public function create()
     {
         $technical = new Technical();
-        return view('technical.create', compact('technical'));
+        return view('technicals.create', compact('technical'));
     }
 
     /**
@@ -47,7 +47,7 @@ class TechnicalController extends Controller
 
         $technical = Technical::create($request->all());
 
-        return redirect()->route('technical.index')
+        return redirect()->route('technicals.index')
             ->with('success', 'Technical created successfully.');
     }
 
@@ -61,7 +61,7 @@ class TechnicalController extends Controller
     {
         $technical = Technical::find($id);
 
-        return view('technical.show', compact('technical'));
+        return view('technicals.show', compact('technical'));
     }
 
     /**
@@ -74,7 +74,7 @@ class TechnicalController extends Controller
     {
         $technical = Technical::find($id);
 
-        return view('technical.edit', compact('technical'));
+        return view('technicals.edit', compact('technical'));
     }
 
     /**

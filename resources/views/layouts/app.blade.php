@@ -32,11 +32,11 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                             <a class="nav-link" href="{{ route('technical.index') }}">{{ __('Tecnicos') }}</a>
+                             <a class="nav-link" href="{{ route('technicals.index') }}">{{ __('Tecnicos') }}</a>
                         </li>
 
                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('incident.index') }}">{{ __('Incidencias') }}</a>
+                            <a class="nav-link" href="{{ route('incidents.index') }}">{{ __('Incidencias') }}</a>
                         </li>
 
 

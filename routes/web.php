@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('incident', App\Http\Controllers\IncidentController::class);
-Route::resource('technical', App\Http\Controllers\TechnicalController::class);
+Route::resource('incidents', App\Http\Controllers\IncidentsController::class);
+Route::resource('technicals', App\Http\Controllers\TechnicalsController::class);
 //route('technical.destroy',$techincal->id);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
